@@ -1,2 +1,0 @@
-print(goodbye);
-print(by)

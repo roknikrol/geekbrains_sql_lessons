@@ -1,3 +1,0 @@
-print(welcome;);
-print(hello again;);
-print(what is your name;?);
