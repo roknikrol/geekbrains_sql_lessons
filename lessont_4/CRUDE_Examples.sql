@@ -1,4 +1,4 @@
-/*Меняем значения таблицы targer_types с сгенерированных на осмысленные*/
+/*change auto_generated values to real values*/
 
 TRUNCATE target_types;
 
@@ -15,7 +15,7 @@ INSERT INTO target_types VALUES
 (10,'profile_update',NOW())
 
 
-/*ТОП 10 пользователей по лайкам*/
+/*Top 10 users by likes*/
 SELECT
 	 CONCAT(users.firstname , ' ', users.lastname) as 'User name'
 	,COUNT(DISTINCT likes.id) as 'likes count'
@@ -28,18 +28,18 @@ LIMIT 10
 
 
 
---заполняем значения нового столбца region_id в profiles случайынми числами
+--populate region_id in profiles table with random numbers
 
 UPDATE profiles SET region_id = FLOOR(RAND()*(100-11))
 
--- проверяем
+-- check 
 select DISTINCT region_id, user_id FROM profiles order BY region_id
 
---подставилось случайное значние = 0, у пользователя 92, поэтому делаем апдэйт
+--a 0 value was inserted (user_id = 92), update manually
 UPDATE profiles SET region_id = 1 where user_id = 92
 
 
-/*ТОП 10 стран по количеству постов*/
+/*top 10 countries with most posts*/
 SELECT
 	 regions.name AS 'Region name'
 	,COUNT(DISTINCT posts.id) as 'Posts count'
