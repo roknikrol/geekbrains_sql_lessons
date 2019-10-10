@@ -1,0 +1,8 @@
+DELIMITER //
+CREATE FUNCTION hello()
+RETURNS TEXT DETERMINISTIC
+BEGIN
+ RETURN IF(HOUR(NOW()) BETWEEN 0 and 6, 'Good Morning', 
+		IF(HOUR(NOW()) BETWEEN 6 and 12, 'Good Day',
+		IF(HOUR(NOW()) BETWEEN 12 and 18, 'Good Evening','Good Night')));
+END//
